@@ -1,0 +1,25 @@
+export const restaurant = {
+  name: "The White Rabbit",
+  tagline: "A place to celebrate life's special moments.",
+  address: "Pepsicola, Old Sinamangal (Divyeswori Planning), Kathmandu, Bagmati Province, Nepal",
+  mapUrl: "https://maps.google.com/?q=The+White+Rabbit+Pepsicola+Kathmandu",
+  phone: "+977 986-1375309",
+  hours: [{ days: "Monday — Sunday", time: "10:30 AM — 10:00 PM" }],
+  socials: { instagram: "https://www.instagram.com/thewhiterabbitktm/", facebook: "https://www.facebook.com/thewhiterabbitktm" },
+  priceRange: "NPR 500–1,000 per person",
+  amenities: ["Rooftop seating", "Live music", "Onsite bar", "Coffee", "Free parking"],
+  colors: { paper: "#F5F1E8", ink: "#201E1B", accent: "#B52F2D" },
+  signatureDishes: [] as { name: string; description: string; price: string }[],
+  menuImages: [
+    { src: "/images/menu/01-main-dishes.jpg", alt: "Main dishes menu, page 1", page: 1 },
+    { src: "/images/menu/02-main-dishes.jpg", alt: "Main dishes menu, page 2", page: 2 },
+    { src: "/images/menu/03-starters-soups-desserts.jpg", alt: "Soups, starters and desserts menu, page 3", page: 3 },
+    { src: "/images/menu/04-drinks-cocktails.jpg", alt: "Hot drinks, cold drinks and cocktails menu, page 4", page: 4 },
+  ],
+  menuLastUpdated: "",
+  gallery: [
+    { src: "/images/gallery/grilled-chicken.png", alt: "Grilled chicken with vegetables, fries and sauce", label: "Grilled chicken", width: 1242, height: 1648 },
+    { src: "/images/gallery/chicken-burger.png", alt: "Chicken burger served with fries and tomato sauce", label: "Chicken burger", width: 1242, height: 1656 },
+  ],
+  features: { reservations: false, whatsapp: false, qrMenu: true, gallery: true, reviews: false, events: true, delivery: false },
+};
