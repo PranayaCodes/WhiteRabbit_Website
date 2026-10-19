@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --paper: #f5f1e8;
+  --paper: #fafaf8;
   --ink: #201e1b;
   --accent: #b52f2d;
   --muted: #575149;
@@ -34,7 +34,7 @@ button { font: inherit; }
   z-index: 20;
   inset: 0 0 auto;
   height: 76px;
-  background: rgba(248, 246, 240, .97);
+  background: rgba(250, 250, 248, .97);
   border-bottom: 1px solid rgba(32, 30, 27, .1);
   backdrop-filter: blur(10px);
 }
@@ -131,6 +131,8 @@ button { font: inherit; }
   font-weight: 400;
   line-height: 1.02;
   letter-spacing: -.045em;
+  text-align: left;
+  text-wrap: balance;
 }
 .intro {
   display: grid;
@@ -160,13 +162,13 @@ button { font: inherit; }
 }
 
 /* Real guest moments and celebrations */
-.events-section { background: #eee9df; }
+.events-section { background: var(--paper); }
 .events-heading { display: flex; align-items: end; justify-content: space-between; gap: 36px; margin-bottom: 34px; }
 .events-heading .section-heading { max-width: 650px; margin-top: 16px; }
 .events-heading > p { max-width: 330px; margin: 0 0 7px; color: var(--muted); font-size: 13px; line-height: 1.8; }
 .events-collage { columns: 4 220px; column-gap: 18px; }
 .event-card { break-inside: avoid; margin: 0 0 22px; }
-.event-photo { overflow: hidden; background: #ded5c8; }
+.event-photo { overflow: hidden; background: #e7e7e3; }
 .event-photo img { display: block; width: 100%; height: auto; transition: transform .4s var(--ease); }
 .event-card:hover .event-photo img { transform: scale(1.025); }
 .event-card figcaption { padding: 11px 0 0; border-top: 1px solid rgba(32,30,27,.2); margin-top: 9px; }
@@ -231,7 +233,7 @@ button { font: inherit; }
 .menu-intro { max-width: 520px; margin: -10px 0 30px; color: var(--muted); font-size: 14px; line-height: 1.8; }
 
 /* WhatsApp table request */
-.reservation-section { background: #eee9df; border-top: 1px solid rgba(32,30,27,.08); }
+.reservation-section { background: var(--paper); border-top: 1px solid rgba(32,30,27,.08); }
 .reservation-grid { display: grid; grid-template-columns: minmax(270px, .72fr) minmax(0, 1.28fr); align-items: start; gap: clamp(42px, 7vw, 96px); }
 .reservation-copy { padding-top: 10px; }
 .reservation-copy .section-heading { max-width: 420px; margin: 22px 0 20px; font-size: clamp(48px, 5vw, 68px); }
@@ -243,7 +245,7 @@ button { font: inherit; }
 .reservation-contact { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; margin-top: 20px; color: var(--muted); font-size: 12px; line-height: 1.8; }
 .reservation-contact a { color: var(--accent); font-size: 13px; text-underline-offset: 3px; }
 .reservation-contact a:hover { text-decoration: underline; }
-.reservation-form { padding: clamp(24px, 3.5vw, 40px); border: 1px solid rgba(32,30,27,.12); background: #f9f7f2; }
+.reservation-form { padding: clamp(24px, 3.5vw, 40px); border: 1px solid rgba(32,30,27,.12); background: #fff; }
 .reservation-photo { position: relative; height: clamp(260px, 24vw, 360px); overflow: hidden; margin: calc(-1 * clamp(24px, 3.5vw, 40px)) calc(-1 * clamp(24px, 3.5vw, 40px)) 28px; background: #4a3932; }
 .reservation-photo img { object-fit: cover; object-position: center 37%; }
 .reservation-photo::after { position: absolute; inset: 0; content: ""; background: linear-gradient(90deg, rgba(24,20,18,.55), rgba(24,20,18,.08) 78%), linear-gradient(0deg, rgba(24,20,18,.34), transparent 58%); }
@@ -255,7 +257,7 @@ button { font: inherit; }
 .reservation-form-heading span { color: #756e64; font-size: 11px; }
 .form-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 16px; }
 .form-fields label { display: grid; gap: 8px; color: #514c45; font-size: 9px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
-.form-fields input, .form-fields select, .form-fields textarea { width: 100%; min-width: 0; border: 1px solid #d8d2c8; border-radius: 0; background: #fffefa; color: var(--ink); font: 400 14px var(--font-sans), sans-serif; letter-spacing: normal; text-transform: none; }
+.form-fields input, .form-fields select, .form-fields textarea { width: 100%; min-width: 0; border: 1px solid #d9d9d4; border-radius: 0; background: #fff; color: var(--ink); font: 400 14px var(--font-sans), sans-serif; letter-spacing: normal; text-transform: none; }
 .form-fields input, .form-fields select { height: 48px; padding: 0 12px; }
 .form-fields textarea { min-height: 82px; padding: 12px; resize: vertical; }
 .form-fields input:focus, .form-fields select:focus, .form-fields textarea:focus { outline: 2px solid rgba(181,47,45,.22); border-color: var(--accent); }
@@ -267,7 +269,7 @@ button { font: inherit; }
 .reservation-note { margin: 12px 0 0; color: #756e64; font-size: 10px; line-height: 1.6; }
 
 /* Visit and footer */
-.visit { background: #eae4d8; }
+.visit { background: var(--paper); }
 .visit-heading { margin-bottom: 34px; }
 .visit-grid { display: grid; grid-template-columns: minmax(300px, .82fr) minmax(0, 1.18fr); gap: 0; }
 .visit-card { display: grid; grid-template-columns: 1fr 1fr; align-content: start; gap: 30px 24px; padding: clamp(28px, 4vw, 52px); background: var(--accent); color: white; }
@@ -281,7 +283,7 @@ button { font: inherit; }
   position: relative;
   min-height: 440px;
   overflow: hidden;
-  background: #d8d0c2;
+  background: #e5e5e1;
 }
 .visit-map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .map-direction-link { position: absolute; bottom: 18px; left: 18px; padding: 12px 16px; background: var(--paper); color: var(--ink); box-shadow: 0 4px 16px rgba(0,0,0,.15); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
@@ -319,6 +321,7 @@ button { font: inherit; }
 @media (max-width: 760px) {
   html { scroll-padding-top: 68px; }
   .wrap { width: calc(100% - 40px); }
+  .section { padding: 62px 0; }
   .site-header { height: 68px; }
   .header-inner { gap: 10px; }
   .brand-link img { width: 140px; }
@@ -356,7 +359,10 @@ button { font: inherit; }
   .intro { grid-template-columns: 1fr; gap: 30px; }
   .intro-film-portrait { justify-self: center; width: min(100%, 340px); }
   .events-heading { align-items: flex-start; flex-direction: column; gap: 13px; margin-bottom: 24px; }
-  .events-heading .section-heading { font-size: clamp(40px, 10vw, 58px); }
+  .section-heading, .reservation-copy .section-heading, .events-heading .section-heading { margin: 14px 0 0; font-size: clamp(38px, 10vw, 48px); line-height: 1.04; letter-spacing: -.04em; }
+  .reservation-copy .section-heading { margin-bottom: 18px; }
+  .visit-heading { margin-bottom: 24px; }
+  .page-menu h1 { margin: 14px 0 24px; font-size: clamp(48px, 12vw, 64px); line-height: 1.02; letter-spacing: -.04em; text-wrap: balance; }
   .events-collage { columns: 2 140px; column-gap: 13px; }
   .event-card { margin-bottom: 18px; }
   .event-card figcaption p { font-size: 15px; }
@@ -373,7 +379,6 @@ button { font: inherit; }
   .reservation-photo-caption { inset: auto 18px 16px; }
   .reservation-form-heading { align-items: flex-start; flex-direction: column; gap: 6px; margin-bottom: 20px; }
   .form-fields { gap: 15px 12px; }
-  .visit-heading { margin-bottom: 24px; }
   .visit-grid { grid-template-columns: 1fr; }
   .visit-card { gap: 24px 18px; padding: 26px 22px; }
   .visit-map { min-height: 320px; }
@@ -381,6 +386,10 @@ button { font: inherit; }
   .footer .social-links { gap: 18px; }
   .page-menu { padding-top: 110px; }
   .page-menu .menu-pages-grid { margin-top: 0; }
+}
+@media (max-width: 420px) {
+  .form-fields { grid-template-columns: 1fr; }
+  .visit-card { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
