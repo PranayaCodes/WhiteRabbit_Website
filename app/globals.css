@@ -323,6 +323,8 @@ button { font: inherit; }
   .wrap { width: calc(100% - 40px); }
   .section { padding: 62px 0; }
   .site-header { height: 68px; }
+  /* Keep the mobile overlay fixed to the viewport, not the blurred header. */
+  .site-header { backdrop-filter: none; }
   .header-inner { gap: 10px; }
   .brand-link img { width: 140px; }
   .menu-toggle { display: block; padding: 12px 0 12px 12px; color: var(--ink); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
@@ -332,14 +334,17 @@ button { font: inherit; }
     display: none;
     flex-direction: column;
     align-items: stretch;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 0;
-    padding: 28px 24px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 18px 24px calc(24px + env(safe-area-inset-bottom));
     background: var(--paper);
+    z-index: 21;
   }
   .nav.open { display: flex; }
-  .nav a:not(.nav-cta) { padding: 17px 0; border-bottom: 1px solid #d7d1c6; font: 400 34px var(--font-display), serif; }
-  .nav .nav-cta { margin-top: 22px; }
+  .nav a:not(.nav-cta) { padding: 12px 0; border-bottom: 1px solid rgba(32,30,27,.14); font: 400 clamp(28px, 7vw, 32px)/1.1 var(--font-display), serif; }
+  .nav .nav-cta { min-height: 46px; margin: 18px 0 4px; }
   .hero {
     display: grid;
     height: auto;
