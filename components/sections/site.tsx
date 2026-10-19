@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { restaurant } from "@/data/restaurant";
 
 function Header() {
@@ -155,10 +155,35 @@ function VisitSection() {
   </div></section>;
 }
 
+function LifeVideo() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        void video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    }, { threshold: 0.25 });
+
+    observer.observe(video);
+    return () => {
+      observer.disconnect();
+      video.pause();
+    };
+  }, []);
+
+  return <video ref={videoRef} muted loop playsInline preload="none" aria-label="Life at The White Rabbit"><source src="/video/white-rabbit.mp4" type="video/mp4"/></video>;
+}
+
 export function HomePage() {
   return <><Header/><main>
     <section className="hero"><video className="hero-video-main" autoPlay muted loop playsInline preload="auto" aria-label="Food being served at The White Rabbit"><source src="/video/food-service.mp4" type="video/mp4"/></video><div className="wrap hero-content fade-up"><div className="hero-overline">Pepsicola · Kathmandu</div><div className="hero-brand"><Image src="/images/brand/white-rabbit-logo-light.png" alt="The White Rabbit" width={402} height={101} priority/></div><div className="hero-bottom"><p className="hero-sub">A cozy place for good food and good company.</p><div className="hero-actions"><a className="button button-light" href="#menu">Explore the menu</a><a className="button" href="#book">Book a table</a></div></div></div></section>
-    <section className="section wrap intro" id="about"><div><div className="eyebrow">The White Rabbit</div><h2 className="section-heading serif">Life at The White Rabbit.</h2><p className="intro-copy">Good food served fresh, rooftop conversations, and small celebrations that turn an ordinary evening into a favorite memory. From coffee and relaxed dinners to birthdays with friends and family, there’s room here to make the day your own.</p></div><figure className="intro-film-portrait" id="gallery"><video autoPlay muted loop playsInline preload="metadata" aria-label="Life at The White Rabbit"><source src="/video/white-rabbit.mp4" type="video/mp4"/></video><figcaption>LIFE AT THE WHITE RABBIT</figcaption></figure></section>
+    <section className="section wrap intro" id="about"><div><div className="eyebrow">The White Rabbit</div><h2 className="section-heading serif">Life at The White Rabbit.</h2><p className="intro-copy">Good food served fresh, rooftop conversations, and small celebrations that turn an ordinary evening into a favorite memory. From coffee and relaxed dinners to birthdays with friends and family, there’s room here to make the day your own.</p></div><figure className="intro-film-portrait" id="gallery"><LifeVideo/><figcaption>LIFE AT THE WHITE RABBIT</figcaption></figure></section>
     <EventsSection/>
     <section className="section menu-section" id="menu"><div className="wrap"><div className="menu-heading"><div><div className="eyebrow">Fresh from our kitchen</div><h2 className="section-heading serif">The menu<span className="hero-period">.</span></h2></div><p>Tap a page to read the menu full size.</p></div><MenuPages/><p className="menu-meta" style={{ marginTop: 18 }}>Prices are subject to a 10% service charge.</p><Link className="menu-full-link" href="/menu">Open the full menu <span aria-hidden="true">↗</span></Link></div></section>
     <section className="section reservation-section" id="book"><div className="wrap reservation-grid"><div className="reservation-copy"><div className="eyebrow">Reservations · Pepsicola, Kathmandu</div><h2 className="section-heading serif">Book a table.</h2><p>Tell us when you’d like to visit. Your request opens in WhatsApp, where our team can confirm availability directly.</p><div className="reservation-details"><div><span>Open daily</span><strong>10:30 am — 10:00 pm</strong></div><div><span>Typical spend</span><strong>NPR 500 — 1,000 per person</strong></div></div><div className="reservation-contact"><span>Prefer to call?</span><a href={`tel:${restaurant.phone.replace(/[\s-]/g, "")}`}>{restaurant.phone}</a></div></div><ReservationForm/></div></section>
