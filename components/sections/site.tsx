@@ -180,9 +180,44 @@ function LifeVideo() {
   return <video ref={videoRef} muted loop playsInline preload="none" aria-label="Life at The White Rabbit"><source src="/video/white-rabbit.mp4" type="video/mp4"/></video>;
 }
 
+function HeroVideo() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Set the media properties before requesting playback. Mobile Safari can
+    // otherwise treat a React-rendered muted attribute as a late mute change.
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+
+    const startPlayback = () => {
+      if (document.visibilityState === "visible" && video.paused) {
+        void video.play().catch(() => {});
+      }
+    };
+    const handleVisibility = () => {
+      if (document.visibilityState === "visible") startPlayback();
+    };
+
+    startPlayback();
+    video.addEventListener("canplay", startPlayback);
+    document.addEventListener("visibilitychange", handleVisibility);
+
+    return () => {
+      video.removeEventListener("canplay", startPlayback);
+      document.removeEventListener("visibilitychange", handleVisibility);
+    };
+  }, []);
+
+  return <video ref={videoRef} className="hero-video-main" autoPlay muted loop playsInline preload="auto" aria-label="Food being served at The White Rabbit"><source src="/video/food-service.mp4" type="video/mp4"/></video>;
+}
+
 export function HomePage() {
   return <><Header/><main>
-    <section className="hero"><video className="hero-video-main" autoPlay muted loop playsInline preload="auto" aria-label="Food being served at The White Rabbit"><source src="/video/food-service.mp4" type="video/mp4"/></video><div className="wrap hero-content fade-up"><div className="hero-overline">Pepsicola · Kathmandu</div><div className="hero-brand"><Image src="/images/brand/white-rabbit-logo-light.png" alt="The White Rabbit" width={402} height={101} priority/></div><div className="hero-bottom"><p className="hero-sub">A cozy place for good food and good company.</p><div className="hero-actions"><a className="button button-light" href="#menu">Explore the menu</a><a className="button" href="#book">Book a table</a></div></div></div></section>
+    <section className="hero"><HeroVideo/><div className="wrap hero-content fade-up"><div className="hero-overline">Pepsicola · Kathmandu</div><div className="hero-brand"><Image src="/images/brand/white-rabbit-logo-light.png" alt="The White Rabbit" width={402} height={101} priority/></div><div className="hero-bottom"><p className="hero-sub">A cozy place for good food and good company.</p><div className="hero-actions"><a className="button button-light" href="#menu">Explore the menu</a><a className="button" href="#book">Book a table</a></div></div></div></section>
     <section className="section wrap intro" id="about"><div><div className="eyebrow">The White Rabbit</div><h2 className="section-heading serif">Life at The White Rabbit.</h2><p className="intro-copy">Good food served fresh, rooftop conversations, and small celebrations that turn an ordinary evening into a favorite memory. From coffee and relaxed dinners to birthdays with friends and family, there’s room here to make the day your own.</p></div><figure className="intro-film-portrait" id="gallery"><LifeVideo/><figcaption>LIFE AT THE WHITE RABBIT</figcaption></figure></section>
     <EventsSection/>
     <section className="section menu-section" id="menu"><div className="wrap"><div className="menu-heading"><div><div className="eyebrow">Fresh from our kitchen</div><h2 className="section-heading serif">The menu<span className="hero-period">.</span></h2></div><p>Tap a page to read the menu full size.</p></div><MenuPages/><p className="menu-meta" style={{ marginTop: 18 }}>Prices are subject to a 10% service charge.</p><Link className="menu-full-link" href="/menu">Open the full menu <span aria-hidden="true">↗</span></Link></div></section>
