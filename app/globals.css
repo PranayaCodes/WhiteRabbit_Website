@@ -264,6 +264,8 @@ button { font: inherit; }
 .form-fields input:focus, .form-fields select:focus, .form-fields textarea:focus { outline: 2px solid rgba(181,47,45,.22); border-color: var(--accent); }
 .form-notes { grid-column: 1 / -1; }
 .reservation-submit { width: 100%; gap: 14px; margin-top: 20px; cursor: pointer; }
+.whatsapp-action-icon { display: inline-flex; width: 26px; height: 26px; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,.55); border-radius: 50%; }
+.whatsapp-mark { display: block; width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.35; stroke-linecap: round; stroke-linejoin: round; }
 .reservation-status { margin: 12px 0 0; color: #37664c; font-size: 12px; line-height: 1.6; }
 .reservation-status:empty { display: none; }
 .reservation-status a { text-decoration: underline; text-underline-offset: 2px; }
@@ -276,6 +278,8 @@ button { font: inherit; }
 .visit-card { display: grid; grid-template-columns: 1fr 1fr; align-content: start; gap: 30px 24px; padding: clamp(28px, 4vw, 52px); background: var(--accent); color: white; }
 .visit-block h3 { margin: 0 0 12px; color: rgba(255,255,255,.72); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; }
 .visit-block p, .visit-block a { margin: 0; color: white; font-size: 13px; line-height: 1.8; overflow-wrap: anywhere; }
+.visit-block .whatsapp-chat-link { display: inline-flex; align-items: center; gap: 8px; }
+.whatsapp-chat-link .whatsapp-mark { width: 15px; height: 15px; }
 .visit-block a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .amenities { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
 .visit-card .amenities { grid-column: 1 / -1; margin-top: 0; }

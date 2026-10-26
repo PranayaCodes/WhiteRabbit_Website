@@ -82,6 +82,10 @@ function SocialLinks({ location }: { location: "footer" | "visit" }) {
   </div>;
 }
 
+function WhatsAppIcon() {
+  return <svg className="whatsapp-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.1 11.8a8.1 8.1 0 0 1-11.9 7.1L4 20l1.1-4A8.1 8.1 0 1 1 20.1 11.8Z"/><path d="M9.1 8.4c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.7c.1.2 0 .4-.1.6l-.5.6c-.2.2-.2.4 0 .6.5.8 1.2 1.5 2 2 .2.1.4.1.6-.1l.7-.8c.2-.2.4-.2.6-.1l1.6.8c.3.1.4.3.3.6-.1.6-.4 1.1-.9 1.4-.5.4-1.2.5-1.8.3-1.1-.3-2.4-1-3.6-2.2-1.1-1.1-1.9-2.4-2.2-3.4-.2-.7 0-1.4.4-1.9.2-.1.4-.1.5-.1Z"/></svg>;
+}
+
 function Footer() { return <footer className="footer"><div className="wrap footer-inner"><Link className="brand-link footer-brand" href="/" aria-label="The White Rabbit home"><Image src="/images/brand/white-rabbit-logo.png" alt="The White Rabbit" width={402} height={101}/></Link><span>Pepsicola · Kathmandu</span><SocialLinks location="footer"/></div></footer>; }
 
 function ReservationForm() {
@@ -128,7 +132,7 @@ function ReservationForm() {
       <label>Occasion<select name="occasion" defaultValue=""><option value="">Choose an occasion (optional)</option><option>Casual dining</option><option>Birthday</option><option>Family gathering</option><option>Group hangout</option><option>Other celebration</option></select></label>
       <label className="form-notes">Notes<textarea name="notes" rows={3} placeholder="Anything we should know? (optional)"/></label>
     </div>
-    <button className="button reservation-submit" type="submit">Request a table on WhatsApp <span aria-hidden="true">↗</span></button>
+    <button className="button reservation-submit" type="submit">Request a table on WhatsApp <span className="whatsapp-action-icon"><WhatsAppIcon/></span></button>
     <p className="reservation-status" aria-live="polite">{whatsAppUrl && <>WhatsApp should open with your request ready. If it doesn’t, <a href={whatsAppUrl} target="_blank" rel="noreferrer">open your message here</a>.</>}</p>
     <p className="reservation-note">No payment is required to send a request.</p>
   </form>;
@@ -143,7 +147,7 @@ function VisitSection() {
       <div className="visit-card">
         <div className="visit-block"><h3>Address</h3><p>{restaurant.address}</p></div>
         <div className="visit-block"><h3>Hours</h3><p>Monday — Sunday<br/>10:30 AM — 10:00 PM</p></div>
-        <div className="visit-block"><h3>Call or message</h3><p><a href={`tel:+${phone}`}>{restaurant.phone}</a><br/><a href={`https://wa.me/${phone}`} target="_blank" rel="noreferrer">Chat on WhatsApp ↗</a></p></div>
+        <div className="visit-block"><h3>Call or message</h3><p><a href={`tel:+${phone}`}>{restaurant.phone}</a><br/><a className="whatsapp-chat-link" href={`https://wa.me/${phone}`} target="_blank" rel="noreferrer"><WhatsAppIcon/>Chat on WhatsApp</a></p></div>
         <div className="visit-block"><h3>Follow along</h3><SocialLinks location="visit"/></div>
         <div className="amenities">{restaurant.amenities.map((item) => <span key={item}>{item}</span>)}</div>
       </div>
