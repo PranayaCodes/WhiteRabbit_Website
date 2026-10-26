@@ -134,6 +134,7 @@ button { font: inherit; }
   text-align: left;
   text-wrap: balance;
 }
+.heading-accent, .hero-period { color: var(--accent); }
 .intro {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(280px, .72fr);
